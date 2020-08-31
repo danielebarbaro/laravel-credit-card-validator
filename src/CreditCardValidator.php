@@ -64,7 +64,9 @@ class CreditCardValidator
      */
     private function validateRegEx(int $number, string $type): bool
     {
-        return preg_match('/'.self::$pattern_expression[$type].'$/', $number) > 0;
+        return array_key_exists($type, self::$pattern_expression)
+            ? preg_match('/'.self::$pattern_expression[$type].'$/', $number) > 0
+            : false;
     }
 
     /**

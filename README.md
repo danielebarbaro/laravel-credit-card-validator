@@ -1,11 +1,10 @@
-# Very short description of the package
+# Laravel Credit Card VALIDATOR
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/danielebarbaro/laravel-credit-card-validator.svg?style=flat-square)](https://packagist.org/packages/danielebarbaro/laravel-credit-card-validator)
 [![Build Status](https://img.shields.io/travis/danielebarbaro/laravel-credit-card-validator/master.svg?style=flat-square)](https://travis-ci.org/danielebarbaro/laravel-credit-card-validator)
-[![Quality Score](https://img.shields.io/scrutinizer/g/danielebarbaro/laravel-credit-card-validator.svg?style=flat-square)](https://scrutinizer-ci.com/g/danielebarbaro/laravel-credit-card-validator)
 [![Total Downloads](https://img.shields.io/packagist/dt/danielebarbaro/laravel-credit-card-validator.svg?style=flat-square)](https://packagist.org/packages/danielebarbaro/laravel-credit-card-validator)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+laravel-credit-card-validator is a package to validate credit card number.
 
 ## Installation
 
@@ -15,10 +14,60 @@ You can install the package via composer:
 composer require danielebarbaro/laravel-credit-card-validator
 ```
 
+The package will automatically register itself.
+
 ## Usage
 
 ``` php
-// Usage description here
+use Danielebarbaro\LaravelCreditCardValidator\Facades\CreditCardValidatorFacade as CreditCardValidator;
+
+// Check Credit Card 
+CreditCardValidator::validate('4579880200630196');
+```
+
+#### Validation
+
+The package registers a new validation rule.
+
+**credit_card_number**
+
+```php
+use Illuminate\Http\Request;
+
+class Controller {
+
+    public function foo(Request $request) 
+    {
+        $request->validate([
+            'field' => ['credit_card_number'],
+        ]);
+    }
+}
+```
+
+Alternatively, you can also use the `Rule` directly.
+
+```php
+use Illuminate\Http\Request;
+use Danielebarbaro\LaravelCreditCardValidator\Rules;
+
+class Controller {
+
+    public function foo(Request $request) 
+    {
+        $request->validate([
+            'field' => [ new Rules\CreditCardNumber() ],
+        ]);
+    }
+}
+```
+
+### Translations
+Just add and customize validation strings in `resources/lang/en/validation.php`
+```
+    ...
+    'credit_card_number' => 'The :attribute must be a valid Credit Card number',
+    ...
 ```
 
 ### Testing
@@ -47,7 +96,3 @@ If you discover any security related issues, please email barbaro.daniele@gmail.
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
