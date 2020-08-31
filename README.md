@@ -1,10 +1,10 @@
-# Laravel Credit Card VALIDATOR
+# Laravel Credit Card validator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/danielebarbaro/laravel-credit-card-validator.svg?style=flat-square)](https://packagist.org/packages/danielebarbaro/laravel-credit-card-validator)
 [![Build Status](https://img.shields.io/travis/danielebarbaro/laravel-credit-card-validator/master.svg?style=flat-square)](https://travis-ci.org/danielebarbaro/laravel-credit-card-validator)
 [![Total Downloads](https://img.shields.io/packagist/dt/danielebarbaro/laravel-credit-card-validator.svg?style=flat-square)](https://packagist.org/packages/danielebarbaro/laravel-credit-card-validator)
 
-laravel-credit-card-validator is a package to validate credit card number.
+laravel-credit-card-validator is a package to validate credit card number usign [Luhn Algo](https://en.wikipedia.org/wiki/Luhn_algorithm) .
 
 ## Installation
 
